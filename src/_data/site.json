@@ -1,0 +1,50 @@
+{
+  "name": "Beyond Fake Studying",
+  "tagline": "Real strategies for students who want to actually learn",
+  "description": "Evidence-based study tips and learning strategies",
+  "url": "https://beyondfakestudying.com",
+  "author": {
+    "name": "Your Name",
+    "email": "hello@example.com"
+  },
+  "logo": "/images/logo.png",
+  "favicon": "/images/favicon.ico",
+  "colors": {
+    "primary": "#E07020",
+    "primaryDark": "#C45F18",
+    "background": "#F5EDE0",
+    "surface": "#FFFFFF",
+    "text": "#2D2A26",
+    "textMuted": "#6B6560",
+    "border": "#E0D5C5"
+  },
+  "fonts": {
+    "serif": "Libre Baskerville",
+    "sans": "Inter"
+  },
+  "social": {
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "youtube": ""
+  },
+  "analytics": {
+    "ga4Id": "",
+    "facebookPixelId": ""
+  },
+  "api": {
+    "blogId": "beyond-fake-studying",
+    "workerUrl": "https://up-blogs-1.micaiah-tasks.workers.dev",
+    "courierListId": "4280233c-afd5-4f05-855d-a7e3afd2a333"
+  },
+  "navigation": [
+    { "label": "Home", "url": "/" },
+    { "label": "Archive", "url": "/archive/" },
+    { "label": "About", "url": "/about/" }
+  ],
+  "footerLinks": [
+    { "label": "RSS", "url": "/feed.xml" },
+    { "label": "Subscribe", "url": "/#subscribe" }
+  ],
+  "copyright": "Untitled Publishers"
+}
