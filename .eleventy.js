@@ -6,12 +6,12 @@ module.exports = function(eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(pluginRss);
 
-  // Passthrough copy
-  eleventyConfig.addPassthroughCopy('src/css');
-  eleventyConfig.addPassthroughCopy('src/js');
-  eleventyConfig.addPassthroughCopy('src/images');
-  eleventyConfig.addPassthroughCopy('src/robots.txt');
-  eleventyConfig.addPassthroughCopy('src/CNAME');
+  // Passthrough copy (paths relative to input dir 'src')
+  eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('js');
+  eleventyConfig.addPassthroughCopy('images');
+  eleventyConfig.addPassthroughCopy('robots.txt');
+  eleventyConfig.addPassthroughCopy('CNAME');
 
   // Date filters
   eleventyConfig.addFilter('readableDate', dateObj => {
@@ -26,7 +26,6 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toISO();
   });
 
-  // Reading time filter
   eleventyConfig.addFilter('readingTime', content => {
     const wordsPerMinute = 200;
     const words = content.split(/\s+/).length;
@@ -34,25 +33,21 @@ module.exports = function(eleventyConfig) {
     return minutes;
   });
 
-  // Excerpt filter
   eleventyConfig.addFilter('excerpt', content => {
     const stripped = content.replace(/<[^>]*>/g, '');
     return stripped.substring(0, 160) + (stripped.length > 160 ? '...' : '');
   });
 
-  // Limit filter for collections
   eleventyConfig.addFilter('limit', (arr, limit) => {
     return arr.slice(0, limit);
   });
 
-  // Get first n items
   eleventyConfig.addFilter('head', (arr, n) => {
     if (!Array.isArray(arr)) return [];
     if (n < 0) return arr.slice(n);
     return arr.slice(0, n);
   });
 
-  // Markdown config
   const md = markdownIt({
     html: true,
     breaks: true,
@@ -60,14 +55,12 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.setLibrary('md', md);
 
-  // Collection: All posts sorted by date descending
   eleventyConfig.addCollection('posts', collection => {
     return collection.getFilteredByGlob('src/posts/*.md').sort((a, b) => {
       return b.date - a.date;
     });
   });
 
-  // Collection: Posts by tag
   eleventyConfig.addCollection('tagList', collection => {
     const tags = new Set();
     collection.getAll().forEach(item => {
